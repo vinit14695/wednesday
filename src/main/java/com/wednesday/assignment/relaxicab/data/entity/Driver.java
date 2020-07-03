@@ -31,6 +31,10 @@ public class Driver {
     @Column(name = "cab_number")
     private String cabNumber;
 
+    @Column(name = "contact_number")
+    @NotNull
+    private String contactNumber;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "current_location_id")
     private Location currentLocation;

@@ -31,6 +31,7 @@ public class User {
     @NotNull
     private String lastName;
 
+    @Column(name = "username")
     @Size(max = 30)
     @NotNull
     private String userName;

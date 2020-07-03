@@ -35,6 +35,7 @@ public class TestService {
                         .build())
                 .available(true)
                 .cabNumber("MH31E234")
+                .contactNumber("774400221144")
                 .build());
 
         drivers.add(Driver.builder()
@@ -49,6 +50,7 @@ public class TestService {
                         .build())
                 .available(true)
                 .cabNumber("MH49E274")
+                .contactNumber("774400221144")
                 .build());
 
         drivers.add(Driver.builder()
@@ -63,8 +65,9 @@ public class TestService {
                         .build())
                 .available(true)
                 .cabNumber("MH31G243")
+                .contactNumber("774400221144")
                 .build());
-
+        //todo: remove this and use migration for oinserting data
         driverRepository.saveAll(drivers);
 
     }

@@ -34,7 +34,7 @@ UserBusinessService {
     public User createUser(User user) throws SignUpRestrictedException {
 
         // To check for the condition username already exists
-        if (userRepository.findByUsername(user.getUserName()) != null) {
+        if (userRepository.findByUserName(user.getUserName()) != null) {
             throw new SignUpRestrictedException("UBS-001", "Try any other Username, this Username has already been taken");
         }
 
@@ -55,7 +55,7 @@ UserBusinessService {
 
 
     public UserAuthentication authenticateUser(String username, String password) throws AuthenticationFailedException, GenericException {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUserName(username);
 
         //Username does not exist in DB
         if (user == null) {
