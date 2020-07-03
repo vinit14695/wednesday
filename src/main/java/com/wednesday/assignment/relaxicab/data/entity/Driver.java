@@ -1,9 +1,11 @@
 package com.wednesday.assignment.relaxicab.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,6 +17,7 @@ import javax.validation.constraints.NotNull;
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Integer id;
 
     @Column(name = "first_name")
@@ -37,8 +40,10 @@ public class Driver {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "current_location_id")
+    @JsonIgnore
     private Location currentLocation;
 
+    @JsonIgnore
     private boolean available;
 
 //    @OneToMany(

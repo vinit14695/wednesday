@@ -39,6 +39,7 @@ public class UserController {
                 .country(signupUserRequest.getCountry())
                 .email(signupUserRequest.getEmailAddress())
                 .contactNumber(signupUserRequest.getContactNumber())
+                .role("customer")
                 .build();
 
         User createdUserEntity = userBusinessService.createUser(user);

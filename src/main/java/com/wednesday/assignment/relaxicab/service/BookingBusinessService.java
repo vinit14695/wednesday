@@ -5,6 +5,7 @@ import com.wednesday.assignment.relaxicab.repository.TripRepository;
 import com.wednesday.assignment.relaxicab.service.exception.NoDriverAvailableException;
 import com.wednesday.assignment.relaxicab.service.exception.NoTripFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class BookingBusinessService {
     @Autowired
     private DriverBusinessService driverBusinessService;
 
+    @Value("${cab.rate.per.kilometer}")
+    private int ratePerKilometer;
+
     public Trip bookCab(User user, Location from, Location to) throws NoDriverAvailableException {
         //get nearby driver;
         List<NearbyDriver> nearbyDrivers = driverBusinessService.getNearbyDrivers(from);
@@ -31,9 +35,9 @@ public class BookingBusinessService {
 
 
         //get distance
-        long distance = 0;
+        long distance = (long) driverBusinessService.calculateHarversinDistance(from.getLatitude(), from.getLongitude(), to.getLatitude(), to.getLongitude());
 
-        double amount = 0;
+        double amount = ratePerKilometer * (distance/1000);
 
         //book a trip
         Trip bookedTrip = Trip.builder()

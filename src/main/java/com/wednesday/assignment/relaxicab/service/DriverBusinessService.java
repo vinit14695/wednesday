@@ -36,7 +36,7 @@ public class DriverBusinessService {
         return nearbyDrivers;
     }
 
-    private static double calculateHarversinDistance(double lat1,double lon1,double lat2,double lon2) {
+    public double calculateHarversinDistance(double lat1,double lon1,double lat2,double lon2) {
         double distance;
 
         // distance between latitudes and longitudes

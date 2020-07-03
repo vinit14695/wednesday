@@ -3,6 +3,7 @@ package com.wednesday.assignment.relaxicab.controller;
 import com.wednesday.assignment.relaxicab.controller.dto.CabBookingRequest;
 import com.wednesday.assignment.relaxicab.controller.dto.CabBookingResponse;
 import com.wednesday.assignment.relaxicab.controller.dto.TripResponse;
+import com.wednesday.assignment.relaxicab.data.entity.Location;
 import com.wednesday.assignment.relaxicab.data.entity.Trip;
 import com.wednesday.assignment.relaxicab.data.entity.User;
 import com.wednesday.assignment.relaxicab.service.BookingBusinessService;
@@ -34,7 +35,18 @@ public class BookingController {
         //authorize user
         User user = userAuthBusinessService.getUser(authorization);
 
-       Trip bookedTrip = bookingBusinessService.bookCab(user, bookingRequest.getFrom(), bookingRequest.getTo());
+        Location from = Location.builder()
+                .name(bookingRequest.getSourceName())
+                .latitude(bookingRequest.getSourceLatitude())
+                .longitude(bookingRequest.getSourceLongitude())
+                .build();
+
+        Location to = Location.builder()
+                .name(bookingRequest.getDestinationName())
+                .latitude(bookingRequest.getDestinationLatitude())
+                .longitude(bookingRequest.getDestinationLongitude())
+                .build();
+       Trip bookedTrip = bookingBusinessService.bookCab(user,from, to);
 
         CabBookingResponse bookingResponse = CabBookingResponse.builder()
                 .driverFirstName(bookedTrip.getDriver().getFirstName())
@@ -65,7 +77,7 @@ public class BookingController {
 
         return new ResponseEntity<>(TripResponse.builder()
                 .status(0)
-                .message("Here is the list of trips booked bu the user.")
+                .message("Here is the list of trips booked by the user.")
                 .trips(userTrips)
                 .build(), HttpStatus.OK);
     }
