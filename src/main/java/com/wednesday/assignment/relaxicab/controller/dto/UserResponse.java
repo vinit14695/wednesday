@@ -6,8 +6,6 @@ import lombok.Getter;
 @Getter
 
 
-
-
 public class UserResponse extends CommonResponse {
     private long userId;
 

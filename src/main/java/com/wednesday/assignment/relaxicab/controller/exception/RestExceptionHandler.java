@@ -1,7 +1,6 @@
 package com.wednesday.assignment.relaxicab.controller.exception;
 
 
-
 import com.wednesday.assignment.relaxicab.controller.dto.ErrorResponse;
 import com.wednesday.assignment.relaxicab.service.exception.*;
 import org.springframework.http.HttpStatus;
@@ -60,7 +59,6 @@ public class RestExceptionHandler {
                 .build(),
                 HttpStatus.NOT_FOUND);
     }
-
 
 
     @ExceptionHandler(NoTripFoundException.class)

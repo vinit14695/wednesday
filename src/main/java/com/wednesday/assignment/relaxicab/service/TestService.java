@@ -5,7 +5,6 @@ import com.wednesday.assignment.relaxicab.data.entity.Location;
 import com.wednesday.assignment.relaxicab.repository.DriverRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;

@@ -2,7 +2,6 @@ package com.wednesday.assignment.relaxicab.controller;
 
 import com.wednesday.assignment.relaxicab.controller.dto.DriverResponse;
 import com.wednesday.assignment.relaxicab.controller.dto.NearbyDriverRequest;
-import com.wednesday.assignment.relaxicab.data.entity.Driver;
 import com.wednesday.assignment.relaxicab.data.entity.Location;
 import com.wednesday.assignment.relaxicab.data.entity.NearbyDriver;
 import com.wednesday.assignment.relaxicab.service.DriverBusinessService;

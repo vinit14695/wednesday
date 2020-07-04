@@ -37,7 +37,7 @@ public class BookingBusinessService {
         //get distance
         long distance = (long) driverBusinessService.calculateHarversinDistance(from.getLatitude(), from.getLongitude(), to.getLatitude(), to.getLongitude());
 
-        double amount = ratePerKilometer * (distance/1000);
+        double amount = ratePerKilometer * (distance / 1000);
 
         //book a trip
         Trip bookedTrip = Trip.builder()

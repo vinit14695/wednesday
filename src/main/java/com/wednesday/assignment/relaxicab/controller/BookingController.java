@@ -46,7 +46,7 @@ public class BookingController {
                 .latitude(bookingRequest.getDestinationLatitude())
                 .longitude(bookingRequest.getDestinationLongitude())
                 .build();
-       Trip bookedTrip = bookingBusinessService.bookCab(user,from, to);
+        Trip bookedTrip = bookingBusinessService.bookCab(user, from, to);
 
         CabBookingResponse bookingResponse = CabBookingResponse.builder()
                 .driverFirstName(bookedTrip.getDriver().getFirstName())

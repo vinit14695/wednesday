@@ -36,7 +36,7 @@ public class DriverBusinessService {
         return nearbyDrivers;
     }
 
-    public double calculateHarversinDistance(double lat1,double lon1,double lat2,double lon2) {
+    public double calculateHarversinDistance(double lat1, double lon1, double lat2, double lon2) {
         double distance;
 
         // distance between latitudes and longitudes
@@ -58,15 +58,13 @@ public class DriverBusinessService {
         return distance;
     }
 
-    public Driver updateDriver(Driver driver){
+    public Driver updateDriver(Driver driver) {
         return driverRepository.save(driver);
     }
 
-    class SortByDistance implements Comparator<NearbyDriver>
-    {
+    class SortByDistance implements Comparator<NearbyDriver> {
         // Used for sorting in ascending order of
-        public int compare(NearbyDriver a, NearbyDriver b)
-        {
+        public int compare(NearbyDriver a, NearbyDriver b) {
             double doubleCompareValue = a.getDistanceFromLocationInMeters() - b.getDistanceFromLocationInMeters();
             return (int) doubleCompareValue;
         }
