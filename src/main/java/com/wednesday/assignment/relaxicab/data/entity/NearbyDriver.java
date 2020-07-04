@@ -10,5 +10,5 @@ import lombok.*;
 @NoArgsConstructor
 public class NearbyDriver {
     private Driver driver;
-    private double distanceFromLocation;
+    private double distanceFromLocationInMeters;
 }

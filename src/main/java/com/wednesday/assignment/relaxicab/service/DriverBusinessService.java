@@ -29,7 +29,7 @@ public class DriverBusinessService {
         List<NearbyDriver> nearbyDrivers = new ArrayList<>();
         for (Driver driver : availableDrivers) {
             double distanceInMeters = calculateHarversinDistance(from.getLatitude(), from.getLongitude(), driver.getCurrentLocation().getLatitude(), driver.getCurrentLocation().getLongitude());
-            nearbyDrivers.add(NearbyDriver.builder().driver(driver).distanceFromLocation(distanceInMeters).build());
+            nearbyDrivers.add(NearbyDriver.builder().driver(driver).distanceFromLocationInMeters(distanceInMeters).build());
         }
         nearbyDrivers.sort(new SortByDistance());
 
@@ -67,7 +67,7 @@ public class DriverBusinessService {
         // Used for sorting in ascending order of
         public int compare(NearbyDriver a, NearbyDriver b)
         {
-            double doubleCompareValue = a.getDistanceFromLocation() - b.getDistanceFromLocation();
+            double doubleCompareValue = a.getDistanceFromLocationInMeters() - b.getDistanceFromLocationInMeters();
             return (int) doubleCompareValue;
         }
     }

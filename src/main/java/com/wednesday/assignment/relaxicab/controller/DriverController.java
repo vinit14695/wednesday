@@ -1,6 +1,7 @@
 package com.wednesday.assignment.relaxicab.controller;
 
 import com.wednesday.assignment.relaxicab.controller.dto.DriverResponse;
+import com.wednesday.assignment.relaxicab.controller.dto.NearbyDriverRequest;
 import com.wednesday.assignment.relaxicab.data.entity.Driver;
 import com.wednesday.assignment.relaxicab.data.entity.Location;
 import com.wednesday.assignment.relaxicab.data.entity.NearbyDriver;
@@ -25,11 +26,14 @@ public class DriverController {
     @Autowired
     private DriverBusinessService driverBusinessService;
 
-    @GetMapping(path = "/get/nearby", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DriverResponse> getNearbyDrivers(Location currentLocation, @RequestHeader final String authorization) throws NoDriverAvailableException {
+    @GetMapping(path = "/get/nearby", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DriverResponse> getNearbyDrivers(NearbyDriverRequest nearbyDriverRequest, @RequestHeader final String authorization) throws NoDriverAvailableException {
 
-
-        List<NearbyDriver> nearbyDrivers = driverBusinessService.getNearbyDrivers(currentLocation);
+        Location location = Location.builder()
+                .latitude(nearbyDriverRequest.getLatitude())
+                .longitude(nearbyDriverRequest.getLongitude())
+                .build();
+        List<NearbyDriver> nearbyDrivers = driverBusinessService.getNearbyDrivers(location);
 
         return new ResponseEntity<>(DriverResponse.builder()
                 .status(0)
